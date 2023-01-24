@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: /en/swap
+spec:
+  selector:
+    app: app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: app
+spec:
+  selector:
+    matchLabels:
+      app: app
+  serviceName: "app"
+  updateStrategy:
+    type: RollingUpdate
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      readinessGates:
+        - conditionType: target-health.alb.ingress.k8s.aws/catalog_app_80
+      terminationGracePeriodSeconds: 70
+      containers:
+        - name: app
+          image: CONTAINER_IMAGE
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "500Mi"
+              cpu: "500m"
+            limits:
+              memory: "500Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 3000
+          lifecycle:
+            preStop:
+              exec:
+                command: ["/bin/sh", "-c", "sleep 40"]
