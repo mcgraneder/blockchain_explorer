@@ -12,7 +12,7 @@ import {
 import { useTranslation } from "next-i18next";
 import { LoadingIndicator } from "../../icons/LoadingIndicator";
 import TransactionSkeleton from "src/components/Skeletons/TransactionsSkeleton";
-import { UilCheckCircle, UiRefresh } from "@iconscout/react-unicons";
+import { UilCheckCircle, UilRefresh } from "@iconscout/react-unicons";
 
 export interface IBlockNavigaor {
   blockNumber: string;
@@ -221,7 +221,7 @@ export const AsyncIcon: React.FC<{
   }, [onClick]);
 
   return calling ? (
-    <UiRefresh className={`h-8 px-0.5 text-gray-500 font-thin animate-spin ${className}`} />
+    <UilRefresh className={`h-8 px-0.5 text-gray-500 font-thin animate-spin ${className}`} />
   ) : called && showSuccess ? (
     <UilCheckCircle className={`h-8 text-green-500 font-thin className`} />
   ) : (
