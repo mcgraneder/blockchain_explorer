@@ -12,7 +12,7 @@ import useInterval from "use-interval";
 import TransactionData from "../../components/explorer/Transactions/TransactionData";
 import { LoadingIndicator } from "../../components/icons/LoadingIndicator";
 
-const BlockPage: NextPage = () => {
+const TransactionsPage: NextPage = () => {
   const { ethRPC } = useRPCClient();
 
   if (!ethRPC) return <LoadingIndicator />;
@@ -34,8 +34,8 @@ export const getStaticProps = async ({ locale }: any) => ({
 export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
   return {
     paths: [],
-    fallback: "blocking",
+    fallback: false,
   };
 };
 
-export default BlockPage;
+export default TransactionsPage;

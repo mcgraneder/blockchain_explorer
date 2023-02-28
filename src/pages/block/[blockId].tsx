@@ -12,7 +12,7 @@ import { useRecentTransactions } from "../../hooks/useRecentTransactions";
 import useInterval from "use-interval";
 import { LoadingIndicator } from "../../components/icons/LoadingIndicator";
 
-const BlockPage: NextPage = () => {
+const BlocksPage: NextPage = () => {
   const { ethRPC } = useRPCClient();
 
   if (!ethRPC) return <LoadingIndicator />;
@@ -34,8 +34,8 @@ export const getStaticProps = async ({ locale }: any) => ({
 export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
   return {
     paths: [],
-    fallback: "blocking",
+    fallback: true,
   };
 };
 
-export default BlockPage;
+export default BlocksPage;
