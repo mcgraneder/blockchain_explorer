@@ -1,8 +1,6 @@
 import type { NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import ExplorerWeb from "src/components/explorer/Home/ExplorerWeb";
-import { Breakpoints } from "src/utils/Breakpoints";
-import { useViewport } from "../hooks/useViewport";
 import { useRPCClient } from "src/contexts/useRPCClient";
 
 const ExplorerHomePage: NextPage = () => {
