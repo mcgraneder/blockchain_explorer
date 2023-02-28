@@ -13,7 +13,7 @@ interface BottomNavigationBarProps {
   inMaintenance?: boolean;
 }
 
-const NavItem = ({ route, Icon, label, inMaintenance = false }: NavItemProps) => {
+const NavItem = ({ route, Icon, label, inMaintenance = false }: NavItemProps & BottomNavigationBarProps) => {
   const { pathname } = useRouter();
 
   return (
