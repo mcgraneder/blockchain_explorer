@@ -34,7 +34,7 @@ export const getStaticProps = async ({ locale }: any) => ({
 export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
   return {
     paths: [],
-    fallback: false,
+    fallback: "blocking",
   };
 };
 

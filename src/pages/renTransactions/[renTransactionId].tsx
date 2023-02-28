@@ -6,7 +6,7 @@ import { useViewport } from "../../hooks/useViewport";
 import { Layout } from "src/layouts";
 import { RenTransaction } from "src/components/explorer/Ren/RenTransaction/RenTransaction";
 
-const RenTransation: NextPage = () => {
+const RenTransactions: NextPage = () => {
   return (
     <>
       <Layout>
@@ -29,4 +29,4 @@ export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
   };
 };
 
-export default RenTransation;
+export default RenTransactions;

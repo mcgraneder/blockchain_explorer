@@ -25,17 +25,17 @@ const BlocksPage: NextPage = () => {
   );
 };
 
-export const getStaticProps = async ({ locale }: any) => ({
-  props: {
-    ...(await serverSideTranslations(locale, ["common", "errors"])),
-  },
-});
+// export const getStaticProps = async ({ locale }: any) => ({
+//   props: {
+//     ...(await serverSideTranslations(locale, ["common", "errors"])),
+//   },
+// });
 
-export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
-  return {
-    paths: [],
-    fallback: true,
-  };
-};
+// export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
+//   return {
+//     paths: [],
+//     fallback: "blocking",
+//   };
+// };
 
 export default BlocksPage;
