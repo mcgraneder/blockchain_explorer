@@ -11,16 +11,14 @@ import Seperator from "../../../public/svgs/seperator.svg";
 import { UilSync } from "@iconscout/react-unicons";
 import { redirectLinks } from "src/constants/Apis";
 
-export type NavItemProps = { route: string; Icon: any; label: string; };
+export type NavItemProps = { route: string; Icon: any; label: string };
 
-
-const NavItem = ({ route, Icon, label}: NavItemProps) => {
+const NavItem = ({ route, Icon, label }: NavItemProps) => {
   const { pathname } = useRouter();
 
   return (
     <Link href={route} passHref>
-      <a
-        className={`relative flex items-center h-full p-4`}>
+      <a className={`relative flex items-center h-full p-4`}>
         {pathname === route && (
           <ActiveTabIndicator className='absolute bottom-0 left-0 right-0 flex w-full self-end mx-auto mt-auto h-[7px]' />
         )}
@@ -28,7 +26,7 @@ const NavItem = ({ route, Icon, label}: NavItemProps) => {
           className={`flex  items-center gap-4 text-lg font-semibold ${
             pathname === route && `text-primary`
           }`}>
-          <Icon className={`${pathname === route ? "stroke-primary" : " stroke-white"}`}/>
+          <Icon className={`${pathname === route ? "stroke-primary" : " stroke-white"}`} />
           {label}
         </span>
       </a>
@@ -49,29 +47,15 @@ function NavigationBar() {
         <div className='px-3 py-4 xs:px-0 xs:py-6'>
           <div onClick={reload} className='hover:cursor-pointer'>
             <a className='flex items-center w-max'>
-              <LogoFull className='hidden xs:block' />
+              {/* <LogoFull className='hidden xs:block' />
               <Logo className='w-8 h-8 xs:hidden' />
-              <Seperator className='' />
-              <div className='mx-4'>ANALYTICS</div>
+              <Seperator className='' /> */}
+              <div className='mx-4'>REN EXPLORER</div>
             </a>
           </div>
         </div>
         <div className='relative items-center justify-center hidden h-full lg:gap-10 xl:gap-18 lg:flex'>
-          <NavItem
-            route={redirectLinks.analytics}
-            Icon={UilSync}
-            label={t("navigationLabels.analytics")}
-          />
-          <NavItem
-            route='/explorerHome'
-            Icon={ExplorerIcon}
-            label={t("navigationLabels.explorer")}
-          />
-          <NavItem
-            route='/names'
-            Icon={NamesIcon}
-            label={t("navigationLabels.names")}
-          />
+          <NavItem route='/explorerHome' Icon={ExplorerIcon} label={"explorer"} />
         </div>
       </div>
     </nav>
